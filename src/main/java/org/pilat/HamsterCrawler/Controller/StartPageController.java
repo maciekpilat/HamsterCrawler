@@ -6,6 +6,8 @@
 package org.pilat.HamsterCrawler.Controller;
 
 import java.io.IOException;
+import java.util.List;
+import org.jsoup.nodes.Document;
 import org.pilat.HamsterCrawler.Crawler.JSoupCrawler;
 import org.pilat.HamsterCrawler.Utils.PhantomSeleniumConfig;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,9 +36,15 @@ public class StartPageController {
     
     @PostMapping("/start")
     public String postStartPage(@RequestParam("url")String url) throws IOException{
-        System.out.println("Oto url: " + url);
-        jSoupCrawler.startHamsterCrawler(url);
-        //phantomSeleniumConfig.initPhantomJS(url);       
+                
+        Document jsoupDocument = jSoupCrawler.getDocumentFromURL(url);
+        
+        int pagesNumber = jSoupCrawler.getNumberOfFilePages(jsoupDocument);
+        
+        List idList = jSoupCrawler.getIdListToDownload(jsoupDocument);
+
+        System.out.println("Given URL: " + url + " and NUMBER OF PAGES: " + pagesNumber + " ID: " + idList.toString());
+        
         return "redirect:start";
     }
 }

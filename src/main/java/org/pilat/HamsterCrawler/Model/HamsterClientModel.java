@@ -13,29 +13,35 @@ public class HamsterClientModel {
 
     private String Login;
     private String Password;
+    
     // COOKIE
     // __RequestVerificationToken_Lw__
-    // ChomikSession
-    // RememberMe
-    // rcid
-    // guid
-    // __cfduid
+    //__cfduid
+    //guid
+    //rcid
+    //RememberMe
+    //ChomikSession
     private String requestVerificationTokenLw;
-    private String chomikSession;
-    private String rememberMe;
-    private String rcid;        
-    private String guid;
     private String cfduid;
+    private String guid;
+    private String rcid;
+    private String rememberMe;
+    private String chomikSession;
+
     // other
     private String __RequestVerificationToken;
     private String fielId;
     private String SerializedOrgFile;
     private String SerializedUserSelection;
+    
+    private String urlToDownload;
 
     @Override
     public String toString() {
-        return "HamsterClientModel{" + "Login=" + Login + ", Password=" + Password + ", requestVerificationTokenLw=" + requestVerificationTokenLw + ", chomikSession=" + chomikSession + ", rememberMe=" + rememberMe + ", rcid=" + rcid + ", guid=" + guid + ", cfduid=" + cfduid + ", __RequestVerificationToken=" + __RequestVerificationToken + ", fielId=" + fielId + ", SerializedOrgFile=" + SerializedOrgFile + ", SerializedUserSelection=" + SerializedUserSelection + '}';
+        return "HamsterClientModel{" + "Login=" + Login + ", Password=" + Password + ", requestVerificationTokenLw=" + requestVerificationTokenLw + ", cfduid=" + cfduid + ", guid=" + guid + ", rcid=" + rcid + ", rememberMe=" + rememberMe + ", chomikSession=" + chomikSession + ", __RequestVerificationToken=" + __RequestVerificationToken + ", fielId=" + fielId + ", SerializedOrgFile=" + SerializedOrgFile + ", SerializedUserSelection=" + SerializedUserSelection + ", urlToDownload=" + urlToDownload + '}';
     }
+
+
 
     
     
@@ -82,45 +88,17 @@ public class HamsterClientModel {
     }
 
     /**
-     * @return the chomikSession
+     * @return the cfduid
      */
-    public String getChomikSession() {
-        return chomikSession;
+    public String getCfduid() {
+        return cfduid;
     }
 
     /**
-     * @param chomikSession the chomikSession to set
+     * @param cfduid the cfduid to set
      */
-    public void setChomikSession(String chomikSession) {
-        this.chomikSession = chomikSession;
-    }
-
-    /**
-     * @return the rememberMe
-     */
-    public String getRememberMe() {
-        return rememberMe;
-    }
-
-    /**
-     * @param rememberMe the rememberMe to set
-     */
-    public void setRememberMe(String rememberMe) {
-        this.rememberMe = rememberMe;
-    }
-
-    /**
-     * @return the rcid
-     */
-    public String getRcid() {
-        return rcid;
-    }
-
-    /**
-     * @param rcid the rcid to set
-     */
-    public void setRcid(String rcid) {
-        this.rcid = rcid;
+    public void setCfduid(String cfduid) {
+        this.cfduid = cfduid;
     }
 
     /**
@@ -138,17 +116,45 @@ public class HamsterClientModel {
     }
 
     /**
-     * @return the cfduid
+     * @return the rcid
      */
-    public String getCfduid() {
-        return cfduid;
+    public String getRcid() {
+        return rcid;
     }
 
     /**
-     * @param cfduid the cfduid to set
+     * @param rcid the rcid to set
      */
-    public void setCfduid(String cfduid) {
-        this.cfduid = cfduid;
+    public void setRcid(String rcid) {
+        this.rcid = rcid;
+    }
+
+    /**
+     * @return the rememberMe
+     */
+    public String getRememberMe() {
+        return rememberMe;
+    }
+
+    /**
+     * @param rememberMe the rememberMe to set
+     */
+    public void setRememberMe(String rememberMe) {
+        this.rememberMe = rememberMe;
+    }
+
+    /**
+     * @return the chomikSession
+     */
+    public String getChomikSession() {
+        return chomikSession;
+    }
+
+    /**
+     * @param chomikSession the chomikSession to set
+     */
+    public void setChomikSession(String chomikSession) {
+        this.chomikSession = chomikSession;
     }
 
     /**
@@ -207,9 +213,20 @@ public class HamsterClientModel {
         this.SerializedUserSelection = SerializedUserSelection;
     }
 
-    
-    
-    
+    /**
+     * @return the urlToDownload
+     */
+    public String getUrlToDownload() {
+        return urlToDownload;
+    }
 
-    
+    /**
+     * @param urlToDownload the urlToDownload to set
+     */
+    public void setUrlToDownload(String urlToDownload) {
+        this.urlToDownload = urlToDownload;
+    }
+
+
+   
 }
