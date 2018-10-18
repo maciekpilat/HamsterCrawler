@@ -5,6 +5,8 @@
  */
 package org.pilat.HamsterCrawler.Model;
 
+import java.util.List;
+
 /**
  *
  * @author Pilat
@@ -35,16 +37,33 @@ public class HamsterClientModel {
     private String SerializedUserSelection;
     
     private String urlToDownload;
+    
+    // podstawowy URL z plikami (do uzyskania wlasciwych url do pobrania)
+    private String normalizeHamsterUrl;
+    
+    // lista numierow id plików do pobrania
+    private List idListToDownload;
+    
+    //lista z URL do pobrania plikow (wlasciwe, pod nimi sa pliki)
+    private List urlListToDownload;
+    
+    // liczba stron z plikami do pobrania
+    private int NumberOfFilePages;
+    
+    // link do pobrania spakowanego pliku
+    private String urlToDownloadZipFile;
 
     @Override
     public String toString() {
-        return "HamsterClientModel{" + "Login=" + Login + ", Password=" + Password + ", requestVerificationTokenLw=" + requestVerificationTokenLw + ", cfduid=" + cfduid + ", guid=" + guid + ", rcid=" + rcid + ", rememberMe=" + rememberMe + ", chomikSession=" + chomikSession + ", __RequestVerificationToken=" + __RequestVerificationToken + ", fielId=" + fielId + ", SerializedOrgFile=" + SerializedOrgFile + ", SerializedUserSelection=" + SerializedUserSelection + ", urlToDownload=" + urlToDownload + '}';
+        return "HamsterClientModel{" + "Login=" + Login + ", Password=" + Password + ", requestVerificationTokenLw=" + requestVerificationTokenLw + ", cfduid=" + cfduid + ", guid=" + guid + ", rcid=" + rcid + ", rememberMe=" + rememberMe + ", chomikSession=" + chomikSession + ", __RequestVerificationToken=" + __RequestVerificationToken + ", fielId=" + fielId + ", SerializedOrgFile=" + SerializedOrgFile + ", SerializedUserSelection=" + SerializedUserSelection + ", urlToDownload=" + urlToDownload + ", normalizeHamsterUrl=" + normalizeHamsterUrl + ", idListToDownload=" + idListToDownload + ", urlListToDownload=" + urlListToDownload + ", NumberOfFilePages=" + NumberOfFilePages + ", urlToDownloadZipFile=" + urlToDownloadZipFile + '}';
     }
 
+    
+
 
 
     
-    
+
     /**
      * @return the Login
      */
@@ -227,6 +246,75 @@ public class HamsterClientModel {
         this.urlToDownload = urlToDownload;
     }
 
+    /**
+     * @return the normalizeHamsterUrl
+     */
+    public String getNormalizeHamsterUrl() {
+        return normalizeHamsterUrl;
+    }
 
+    /**
+     * @param normalizeHamsterUrl the normalizeHamsterUrl to set
+     */
+    public void setNormalizeHamsterUrl(String normalizeHamsterUrl) {
+        this.normalizeHamsterUrl = normalizeHamsterUrl;
+    }
+
+    /**
+     * @return the idListToDownload
+     */
+    public List getIdListToDownload() {
+        return idListToDownload;
+    }
+
+    /**
+     * @param idListToDownload the idListToDownload to set
+     */
+    public void setIdListToDownload(List idListToDownload) {
+        this.idListToDownload = idListToDownload;
+    }
+
+    /**
+     * @return the urlListToDownload
+     */
+    public List getUrlListToDownload() {
+        return urlListToDownload;
+    }
+
+    /**
+     * @param urlListToDownload the urlListToDownload to set
+     */
+    public void setUrlListToDownload(List urlListToDownload) {
+        this.urlListToDownload = urlListToDownload;
+    }
+
+    /**
+     * @return the NumberOfFilePages
+     */
+    public int getNumberOfFilePages() {
+        return NumberOfFilePages;
+    }
+
+    /**
+     * @param NumberOfFilePages the NumberOfFilePages to set
+     */
+    public void setNumberOfFilePages(int NumberOfFilePages) {
+        this.NumberOfFilePages = NumberOfFilePages;
+    }
+
+    /**
+     * @return the urlToDownloadZipFile
+     */
+    public String getUrlToDownloadZipFile() {
+        return urlToDownloadZipFile;
+    }
+
+    /**
+     * @param urlToDownloadZipFile the urlToDownloadZipFile to set
+     */
+    public void setUrlToDownloadZipFile(String urlToDownloadZipFile) {
+        this.urlToDownloadZipFile = urlToDownloadZipFile;
+    }
+    
    
 }
