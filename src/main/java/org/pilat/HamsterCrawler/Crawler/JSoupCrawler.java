@@ -49,7 +49,6 @@ public class JSoupCrawler {
     public Document getDocumentFromURL(String url) throws IOException {
 
         Document doc = Jsoup.connect(url).get();
-        //System.out.println("getDocumentFromURL from URL: " + doc.toString());
 
         return doc;
     }
@@ -57,6 +56,7 @@ public class JSoupCrawler {
     public int getNumberOfFilePages(Document jsoupDocument) {
 
         // pozyskuje liczbe stron z plikami
+        System.out.println("Zaczynam badać liczbę stron z plikami.");
         try {
 
             Element paginator = jsoupDocument.getElementsByClass("paginator").first();
@@ -81,10 +81,10 @@ public class JSoupCrawler {
             // wyciagam najwiekszy numer strony (generalnie działa)
             IntSummaryStatistics stat = Arrays.stream(tablicaIntNumeryStron).summaryStatistics();
 
-            System.out.println("try getNumberOfFilePages daje liczbę: " + stat.getMax());
+            System.out.println("Liczba stron na których znajdują się pliki do pobrania: " + stat.getMax());
             return stat.getMax() - 1;
         } catch (Exception e) {
-            System.out.println("catch getNumberOfFilePages daje liczbę: " + '0');
+            System.out.println("Liczba stron na których znajdują się pliki do pobrania: " + '0');
             return 0;
         }
     }

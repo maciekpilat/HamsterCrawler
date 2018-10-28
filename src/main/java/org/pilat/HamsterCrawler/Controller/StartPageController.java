@@ -68,9 +68,11 @@ public class StartPageController {
         //jSoupCrawler.fileDownload(model.getUrlListToDownload(), "Janko");
         
         // pakuje pliki zip
+        System.out.println("Pakuje pliki!");
         jSoupCrawler.zipFiles(jSoupCrawler.fileDownload(model.getUrlListToDownload(), fileName), fileName);
         
         // wysyłam plik na serwer
+        System.out.println("Wysyłam pliki na serwer!");
          jSoupCrawler.singleFileUpload(fileName);
 
          
@@ -78,9 +80,8 @@ public class StartPageController {
          //String downloadURL = "https://panel-s26.zenbox.pl/CMD_FILE_MANAGER/domains/maciekpilat.pl/public_html/hamstercrawler/" + fileName + ".zip";
          String downloadURL = "http://maciekpilat.pl/hamstercrawler/" + fileName + ".zip";
          
-         
-         model.setUrlToDownloadZipFile(downloadURL);
-         
+         System.out.println("Wysyłam maila!");
+         model.setUrlToDownloadZipFile(downloadURL);       
          emailUtil.sendMail(email, downloadURL);
          
 
