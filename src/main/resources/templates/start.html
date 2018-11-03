@@ -1,21 +1,74 @@
-<!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-                <link href="/css/app.css" rel="stylesheet"/>
+
+        <!--<link href="/css/app.css" rel="stylesheet"/>-->
+
+        <style>
+
+            body {
+                background-image: url('/hamsterCrawlerWallpaper.jpg');
+            }
+            #form {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%)
+
+            }
+            #button_download {
+                text-align:center;
+            }
+            
+            .top-buffer { margin-bottom:3%; }
+            
+            .panel-heading {background-color: #ffbf00;}
+
+        </style>
+
     </head>
     <body>
-        <form method="post" action="/start">
-            <input placeholder="wpisz / wklej url" th:name="url"></input>
-            <input placeholder="login" th:name="login"></input>
-            <input placeholder="password" th:name="password"></input>
-            <input placeholder="nazwa pliku" th:name="fileName"></input>
-            <input placeholder="email" th:name="email"></input>
-            <button type="submit">Ściągnij!</button>
-        </form>
+        <div class="container">
+            <div id="form" class="row top-buffer">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Podaj parametry:</div>
+                    <div class="panel-body">
+                        <form method="post" action="/start">
+                            <div class="row top-buffer">
+                                <div class="col-md-4">
+                                    <input placeholder="wpisz / wklej url" class="form-control" th:name="url"></input>
+                                </div>
+                                <div class="col-md-4">
+                                    <input placeholder="login" class="form-control" th:name="login"></input>
+                                </div>
+                                <div class="col-md-4">
+                                    <input placeholder="password" class="form-control" th:name="password"></input>
+                                </div>
+                            </div>
+                            <div class="row top-buffer">
+                                <div class="col-md-6">
+                                    <input placeholder="nazwa pliku" class="form-control" th:name="fileName"></input>
+                                </div>
+                                <div class="col-md-6">
+                                    <input placeholder="email" class="form-control" th:name="email"></input>
+                                </div>
+                            </div>
+                            <div class="row" id="button_download">
+                                <div class="col-md-12">
+                                    <button class="btn-success" type="submit" >Ściągnij!</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
