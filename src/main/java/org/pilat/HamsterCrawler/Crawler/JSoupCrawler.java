@@ -11,8 +11,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.IntSummaryStatistics;
@@ -27,6 +29,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.net.ftp.FTPClient;
 import org.json.JSONObject;
@@ -280,34 +283,48 @@ public class JSoupCrawler {
     }
 
     public void singleFileUpload(String fileName) throws IOException, InterruptedException {
-        
-        //Thread.sleep(10000);
-        
-        String name = fileName + ".zip";
-        
-        System.out.println("Wgrywam plik");
-        
-        FTPClient ftpClient = new FTPClient();
-        ftpClient.connect("s26.zenbox.pl");
-        ftpClient.login("hamstercrawler@maciekpilat.pl", "aktsok");
-        
-        File file = new File("C:\\Users\\Pilat\\Documents\\NetBeansProjects\\HamsterCrawler2\\" + name);
-        InputStream inputStream = new FileInputStream(file);
-        ftpClient.storeFile(name, inputStream);
-       
-        System.out.println("Wgrałem plik");
-        
-        
+
+ String name = fileName + ".zip";
+ 
+        String ftpUrl = "ftp://%s:%s@%s/%s;type=i";
+        String host = "s26.zenbox.pl";
+        String user = "hamstercrawler%40maciekpilat.pl";
+        String pass = "aktsok";
+        String filePath = "C:\\Users\\Pilat\\Documents\\NetBeansProjects\\HamsterCrawler2\\" + name;
+        //String uploadPath = "/MyProjects/archive/" + name;
+        //String uploadPath = "/hamstercrawler/" + name;
+        String uploadPath = name;
+ 
+        ftpUrl = String.format(ftpUrl, user, pass, host, uploadPath);
+        System.out.println("Upload URL: " + ftpUrl);
+ 
+        try {
+            URL url = new URL(ftpUrl); 
+            URLConnection conn = url.openConnection();
+            OutputStream outputStream = conn.getOutputStream();
+            FileInputStream inputStream = new FileInputStream(filePath);
+ 
+            byte[] buffer = new byte[4096];
+            int bytesRead = -1;
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                outputStream.write(buffer, 0, bytesRead);
+            }
+ 
+            inputStream.close();
+            outputStream.close();
+ 
+            System.out.println("File uploaded");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
 
     }
 
-    public void sendLinkToEmail(String fileName){
 
-    String fileURL = "https://panel-s26.zenbox.pl/CMD_FILE_MANAGER/domains/maciekpilat.pl/public_html//hamstercrawler//" + fileName;
-    
-    
-        
+    public void sendLinkToEmail(String fileName) {
+
+        String fileURL = "https://panel-s26.zenbox.pl/CMD_FILE_MANAGER/domains/maciekpilat.pl/public_html//hamstercrawler//" + fileName;
+
     }
-    
 
 }

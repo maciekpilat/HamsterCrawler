@@ -73,7 +73,8 @@ public class StartPageController {
         
         // wysyłam plik na serwer
         System.out.println("Wysyłam pliki na serwer!");
-         jSoupCrawler.singleFileUpload(fileName);
+        jSoupCrawler.singleFileUpload(fileName);
+
 
          
          //wysyłam mail z linkiem
